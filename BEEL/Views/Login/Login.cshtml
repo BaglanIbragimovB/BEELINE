@@ -1,0 +1,42 @@
+﻿@model BEEL.Models.Identity.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/CSS/login.css" type="text/css" />
+
+<div class="container">
+    <div class="loginmodal-container">
+        <center>
+            <img src="~/Content/Images/kmm_logo.png" />
+        </center>
+        <section id="loginForm">
+            @using (Html.BeginForm())
+            {
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @*Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })*@
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.UserName) })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @*Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.Password) })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <input type="submit" value="Войти" class="btn btn-primary btn-lg btn-block" />
+
+
+            }
+            @Html.ActionLink("Register", "Register")
+
+        </section>
+    </div>
+</div>

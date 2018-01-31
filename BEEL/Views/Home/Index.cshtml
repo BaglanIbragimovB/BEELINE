@@ -1,0 +1,17 @@
+﻿@model BEEL.Models.Identity.User
+@{
+    ViewBag.Title = "Home Page";
+}
+<p style="font-size: x-large;">
+    Пользователь <strong>@Model.FullName</strong>, добро пожаловать на сайт! 
+</p>
+
+<p style="font-size: x-large;">
+    Пользователь <strong>@Model.user_list</strong>, добро пожаловать на сайт!
+</p>
+@*using (Html.BeginForm("LogOff", "Login"))
+{
+    <p>
+        <button>Log off</button>
+    </p>
+}*@

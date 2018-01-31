@@ -1,0 +1,104 @@
+﻿@{
+    var myProd = (BEEL.Models.Product)ViewBag.MyProduct;
+    var myUser = (BEEL.Models.Identity.User)ViewBag.MyUser;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/MetisMenu/css")
+    @Styles.Render("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css")
+    @Styles.Render("~/Content/CSS/main.css")
+    @Styles.Render("~/Content/CSS/sb-admin-2.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/sb-admin-2.js")
+</head>
+<body>    
+   @if (Request.IsAuthenticated)//Это я нехорошый ридиска добавил условие
+   {
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">                
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+
+                    <a class="navbar-brand" href="/">
+                        <strong>Программы</strong>
+                    </a>
+                </div>
+                <!-- /.navbar-header -->
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            <span class="glyphicon glyphicon-folder-close">
+                                            </span>Справочники
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-default">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tr>                                                
+                                                <td>
+                                                    <span class="glyphicon glyphicon-user text-primary"></span>@Html.ActionLink("Список пользователей", "Index", "Login")
+                                                </td>
+                                            </tr>
+                                            <tr> 
+                                                
+                                                
+                                                <td>
+                                                    <span class="glyphicon glyphicon-gift text-success"></span>@Html.ActionLink("Список товаров", "Index", "Product")
+                                                </td>
+                                                
+                                            </tr>                                                                                        
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>                                                                           
+                        </div>
+                    </div>
+
+
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+
+            <!-- /#page-wrapper -->
+
+        </div>
+   }
+    <div class="container body-content" id="page-wrapper">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Отдел архитектуры и разработки</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

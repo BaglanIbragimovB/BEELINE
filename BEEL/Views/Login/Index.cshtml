@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BEEL.Models.Identity.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список пользователей</h2>
+
+<p>
+    @*Html.ActionLink("Create New", "Create")*@
+    @*Html.ActionLink("Создать", "Register")*@
+    <a href="@Url.Action("Register")">
+        <i class="btn btn-primary btn-large">
+            Создать
+        </i>
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            №
+        </th>
+        <th>
+            Пользователь
+        </th>
+        <th>
+            ФИО
+        </th>        
+        <th>
+            Дата изменений
+        </th>
+
+        <th>
+            Пользователь Просмотр
+        </th>
+        <th>
+            Пользователь Изменить
+        </th>
+        <th>
+            Пользователь Удалить
+        </th>
+        <th>
+            Товар Просмотр
+        </th>
+        <th>
+            Товар Изменить
+        </th>
+        <th>
+            Товар Удалить
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.ChangeDate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.user_list)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_edit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_delete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prod_list)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prod_edit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prod_delete)
+        </td>
+
+
+        <td>
+            @*
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |           
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            *@
+            <a href="@Url.Action("Edit", new { id = item.Id })">
+                <i class="btn btn-primary btn-large">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </i>
+            </a>
+            <a href="@Url.Action("Delete", new { id = item.Id })">
+                <i class="btn btn-danger btn-large">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </i>
+            </a>
+
+        </td>
+    </tr>
+}
+
+</table>

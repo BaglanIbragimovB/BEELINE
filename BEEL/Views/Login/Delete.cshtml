@@ -1,0 +1,58 @@
+﻿@model BEEL.Models.Identity.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Уверены, что хотите удалить пользователя?</h3>
+<div>   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordHash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChangeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChangeDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> 
+            @*Html.ActionLink("Back to List", "Index")*@
+            <a href="@Url.Action("Index")">
+                <i class="btn btn-primary btn-large">
+                    <span class="glyphicon glyphicon-backward"> Назад</span>
+                </i>
+            </a>
+        </div>
+    }
+</div>
